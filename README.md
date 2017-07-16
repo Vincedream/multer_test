@@ -60,7 +60,7 @@ node app.js
 6、准备工作完成，开始coding吧～
 
 # Multer的使用
-### 1、single(fieldname) - 单个文件上传
+## 1、single(fieldname) - 单个文件上传
 接收一个名为fieldname的上传文件，所上传的文件会被保存在req.file。
 - 在app.js文件中修改以下代码：
 
@@ -147,7 +147,7 @@ app.post('/upload-single',upload.single('logo'),function (req,res,next) {
 
 - 好啦，一个简单的multer上传文件例子完成啦，但是multer还有其他强大功能，我们接着往下看吧～
 
-### 2、.array(fieldname,maxCount)-多文件上传
+## 2、.array(fieldname,maxCount)-多文件上传
 接收名为fieldname的，多个上传文件数组。可选参数maxCount表示可接受的文件数量，上传文件数超出该参数指定的数据后会抛出一个错误。文件数组会被保存在req.files数组中。
 - 在app.js中添加以下代码
 
@@ -194,7 +194,7 @@ app.post('/upload-array',upload.array('logo',3),function (req, res, next) {
 
 其实这个array文件上传是有限制性的，我们注意到，在html中的表单中form的name="logo"必须一致，也就是说在一个form中要上传多个文件，name必须是一致的，这在我们实际开发中显然达不到要求，那么有没有办法解决呢，当然有，别忘了，multer是强大的，往下面接着看吧～
 
-### 3、fields(fields) - 多个文件上传(多域上传)
+## 3、fields(fields) - 多个文件上传(多域上传)
 接收通过fields指定的多个上传文件。文件数组对象会被保存在req.files中。fields是一个包含对象的数组，对象中会包含name和maxCount两个属性：
 
 ```
@@ -261,7 +261,7 @@ app.post('/upload-fields',upload.fields([{name:'logo',maxCount:2},{name:'logo2',
 
 小伙伴们是不是觉得这种上传方式有点繁琐，那么没关系，下面还有一种文件上传方式，非常简便哦，我们一起来看吧
 
-### 4、.any() - 接收所有文件上传
+## 4、.any() - 接收所有文件上传
 接收请求中的所有文件。上传文件数组会被保存在req.files中，这种方式没有多余的限制，比较便捷。
 - 在app.js中添加以下代码：
 
@@ -356,7 +356,7 @@ app.listen(3010,function () {
 ```
 准备工作完成啦，我们来看看Multer还有其他哪些骚操作把～
 
-### 1、文件对象
+## 1、文件对象
 multer解析完上传文件后，会被保存为一个包含以下字段的对象：
 
 
@@ -421,13 +421,14 @@ app.post('/upload-single',upload.single('logo'),function (req,res,next) {
 ![image](http://osutuwgm1.bkt.clouddn.com/E4FC9C78-D793-4C7D-B1E5-1F2783DB2416.png)
 
 
-### 2、选项参数
+## 2、选项参数
 Multer的选项对象中可以包含以下值：
 
 - dest或storage - 文件存储位置
 - fileFilter - 函数，控制可上传的文件类型
 - limits - 上传数据限制(文件大小)
-#### 1.storage - 存储引擎
+
+### 1.storage - 存储引擎
 .diskStorage(obj)与硬盘存储,该选项有以下两个可选项：
 
 - destination - 硬盘存储，用于设置文件的存储目录，可以是一个函数或字符串。若未提供该参数，将使用系统的临时目录。
@@ -477,7 +478,7 @@ app.post('/upload-single',upload.single('logo'),function (req,res,next) {
 
 - 重启test.js，上传文件，发现效果和fs处理效果是一致的。
 
-#### 2.limits - 文件尺寸
+### 2.limits - 文件尺寸
 该选项用于设置文件尺寸，Multer 会将这个对象传递至busboy中。limits对象中可以包含以下可选值：
 
 
@@ -501,7 +502,7 @@ var upload = multer({ storage: storage,limits:{fileSize: 160000}});
 ```
 - 重启test.js，上传文件，大于160kb的文件会显示上传失败
 
-#### 3.fileFilter - 文件筛选
+### 3.fileFilter - 文件筛选
 
 fileFilter用于控制要哪些文件是可接受的，哪些是要被拒绝的。使用形式如下：
 
@@ -546,5 +547,5 @@ var upload = multer({ storage: storage,limits:{fileSize: 160000000},fileFilter:f
 Multer中的几个“骚”操作我们差不多总结完啦，Multer是开发中非常常见的中间件，对于其掌握是非常必要的～
 # 总结
 - 因为官方文档对于multer解释不太清楚，小白看了会懵逼，所以才有了这一篇博文，希望能够帮助到一些刚刚入门Express的小伙伴们，也是自己巩固知识的好机会。
-- 代码已经上传到GitHub啦，运行之前别忘记npm install哦，如果对你有帮助，给个star鼓励下啦～
+- 代码已经上传到[GitHub](https://github.com/Vincedream/multer_test)啦，运行之前别忘记npm install哦，如果对你有帮助，给个star鼓励下啦～
 - Nice to meet you ～
