@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multer</title>
+</head>
+<body>
+<h2>Multer Test</h2>
+<form action="/upload-single" method="post" enctype="multipart/form-data">
+    <h3>1.single(fieldname) - 单个文件上传</h3>
+    文件1：<input type="file" name="logo">
+    <input type="submit" value="提交">
+</form>
+<br>
+<br>
+<form action="/upload-array" method="post" enctype="multipart/form-data">
+    <h3>2.array(fieldname,maxCount)-多文件上传</h3>
+
+    文件1：<input type="file" name="logo"> <br>
+    文件2：<input type="file" name="logo"> <br>
+    文件3：<input type="file" name="logo"> <br>
+    <input type="submit" value="提交">
+</form>
+<br>
+<br>
+<form action="/upload-fields" method="post" enctype="multipart/form-data">
+    <h3>3.fields(fields) - 多个文件上传</h3>
+    文件1: <input type="file" name="logo"> <br>
+    文件2: <input type="file" name="logo"><br>
+    文件3: <input type="file" name="logo2"><br>
+    文件4: <input type="file" name="logo2"><br>
+
+    <input type="submit" value="提交">
+</form>
+
+<br>
+<br>
+<form action="/upload-any" method="post" enctype="multipart/form-data">
+    <h3>4.any() - 接收所有文件上传</h3>
+    文件1: <input type="file" name="logo"> <br>
+    文件2: <input type="file" name="logo"><br>
+    文件3: <input type="file" name="logo2"><br>
+    <input type="submit" value="提交">
+</form>
+
+</body>
+</html>
